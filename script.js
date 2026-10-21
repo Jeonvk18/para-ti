@@ -23,7 +23,7 @@ const TEXT_NEXT = "Dale preciosa 🌸";
 const TEXT_RESTART = "Volver a comenzar 🌱";
 
 /* Emojis que flotan en el fondo (cámbialos si quieres) */
-const FLOATERS = ["🌿", "🍃", "🌸", "💚", "✨", "🌱", "🤍"];
+const FLOATERS = ["🌸", "💚", "✨", "🌱", "🤍"];
 const FLOATER_COUNT = 16;   // menos = más tranquilo
 
 /* ---------- Referencias a elementos ---------- */
