@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#DDEBD8" />
+  <title>Una sorpresa para ti 🌿</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Capa de pétalos, hojas y corazones flotantes (se llena desde script.js) -->
+  <div class="floaters" id="floaters" aria-hidden="true"></div>
+
+  <main class="app">
+
+    <!-- ========== PANTALLA INICIAL ========== -->
+    <section class="screen intro" id="intro">
+      <div class="intro-card">
+        <span class="deco deco-tl" aria-hidden="true">🌿</span>
+        <span class="deco deco-tr" aria-hidden="true">🌸</span>
+        <span class="deco deco-bl" aria-hidden="true">🍃</span>
+        <span class="deco deco-br" aria-hidden="true">✨</span>
+
+        <div class="envelope" aria-hidden="true">💌</div>
+        <h1>Tengo algo bonito<br />para ti, amor 💚</h1>
+        <p class="subtitle">Para demostrarte un poco de lo que siento por ti.</p>
+        <button class="btn" id="startBtn" type="button">Abrir mi sorpresa</button>
+      </div>
+    </section>
+
+    <!-- ========== PANTALLA DE MENSAJES ========== -->
+    <section class="screen story hidden" id="story">
+
+      <!-- Indicador de progreso -->
+      <div class="progress" aria-live="polite">
+        <span class="progress-text" id="progressText">Mensaje 1 de 8</span>
+        <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
+      </div>
+
+      <!-- Cuadro con el mensaje -->
+      <article class="card" id="card" aria-live="polite">
+        <span class="deco deco-tl" aria-hidden="true">🌿</span>
+        <span class="deco deco-br" aria-hidden="true">🍃</span>
+        <div class="card-icon" id="cardIcon" aria-hidden="true"></div>
+        <p class="message" id="cardText"></p>
+      </article>
+
+      <!-- Botón Siguiente / Volver a comenzar -->
+      <button class="btn" id="nextBtn" type="button">Dale preciosa 🌸</button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

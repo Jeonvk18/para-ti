@@ -1,0 +1,497 @@
+/* =========================================================
+   🌿 ESTILOS
+   ---------------------------------------------------------
+   Para cambiar los colores, edita las variables de :root.
+   ========================================================= */
+
+:root {
+  --verde-oscuro: #17542A;
+  /* textos y botones */
+  --verde-salvia: #A8C3A0;
+  /* bordes y detalles */
+  --verde-pastel: #3b652b;
+  /* fondos suaves */
+  --crema: #6e9b64;
+  /* tarjetas */
+
+  --sombra-suave: 0 10px 30px rgba(23, 84, 42, 0.12);
+  --sombra-fuerte: 0 18px 45px rgba(23, 84, 42, 0.18);
+  --radio: 28px;
+
+  --fuente-titulo: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --fuente-texto: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  color: var(--verde-oscuro);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(168, 195, 160, 0.45), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(168, 195, 160, 0.40), transparent 45%),
+    linear-gradient(160deg, var(--crema) 0%, var(--verde-pastel) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Estructura general ---------- */
+.app {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+
+.screen {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  animation: screenIn 0.9s ease both;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.screen.leaving {
+  animation: screenOut 0.5s ease both;
+}
+
+/* ---------- Tarjeta de bienvenida y de mensajes ---------- */
+.intro-card,
+.card {
+  position: relative;
+  width: 100%;
+  background: var(--crema);
+  border: 2px solid var(--verde-salvia);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-suave);
+  text-align: center;
+}
+
+/* Borde interior fino, como una carta */
+.intro-card::before,
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(168, 195, 160, 0.9);
+  border-radius: calc(var(--radio) - 8px);
+  pointer-events: none;
+}
+
+.intro-card {
+  padding: 48px 28px 40px;
+  box-shadow: var(--sombra-fuerte);
+}
+
+.envelope {
+  font-size: 3.4rem;
+  display: inline-block;
+  animation: bob 3.2s ease-in-out infinite;
+}
+
+h1 {
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 6vw, 2.6rem);
+  line-height: 1.2;
+  margin: 12px 0 10px;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  opacity: 0.8;
+  margin-bottom: 28px;
+}
+
+/* ---------- Decoraciones en las esquinas ---------- */
+.deco {
+  position: absolute;
+  font-size: 1.6rem;
+  opacity: 0.85;
+  pointer-events: none;
+  animation: sway 4.5s ease-in-out infinite;
+}
+
+.deco-tl {
+  top: 14px;
+  left: 18px;
+}
+
+.deco-tr {
+  top: 14px;
+  right: 18px;
+  animation-delay: 0.8s;
+}
+
+.deco-bl {
+  bottom: 14px;
+  left: 18px;
+  animation-delay: 1.6s;
+}
+
+.deco-br {
+  bottom: 14px;
+  right: 18px;
+  animation-delay: 2.4s;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  font-family: var(--fuente-texto);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--crema);
+  background: linear-gradient(135deg, #1f6b36, var(--verde-oscuro));
+  border: none;
+  border-radius: 999px;
+  padding: 15px 34px;
+  min-height: 52px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(23, 84, 42, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(23, 84, 42, 0.34);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--verde-salvia);
+  outline-offset: 4px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+/* ---------- Progreso ---------- */
+.progress {
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.progress-text {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.bar {
+  height: 8px;
+  background: rgba(168, 195, 160, 0.45);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--verde-salvia), var(--verde-oscuro));
+  border-radius: 999px;
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Cuadro de mensaje ---------- */
+.card {
+  padding: 52px 30px 44px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  box-shadow: var(--sombra-fuerte);
+}
+
+.card-icon {
+  font-size: 2.4rem;
+  animation: bob 3.2s ease-in-out infinite;
+}
+
+.message {
+  font-family: var(--fuente-titulo);
+  font-size: clamp(1.35rem, 4.6vw, 1.9rem);
+  line-height: 1.5;
+  font-style: italic;
+  max-width: 24em;
+}
+
+/* Cada palabra aparece suavemente, una tras otra */
+.message .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: wordIn 0.6s ease forwards;
+  animation-delay: calc(var(--i) * 70ms + 250ms);
+}
+
+/* Entrada / salida del cuadro */
+.card.enter {
+  animation: cardIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.card.leave {
+  animation: cardOut 0.4s ease both;
+}
+
+/* Cuadro de cierre, un poco más especial */
+.card.final {
+  background: linear-gradient(160deg, var(--crema), var(--verde-pastel));
+  border-color: var(--verde-oscuro);
+}
+
+.card.final .card-icon {
+  font-size: 3rem;
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+/* ---------- Elementos flotantes (pétalos, hojas, corazones) ---------- */
+.floaters {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floater {
+  position: absolute;
+  top: -10vh;
+  left: var(--x);
+  font-size: var(--size);
+  opacity: 0;
+  animation: fall var(--dur) linear var(--delay) infinite;
+  will-change: transform, opacity;
+}
+
+.floater.rise {
+  top: auto;
+  bottom: -10vh;
+  animation-name: rise;
+}
+
+/* Chispas que salen del botón al pulsarlo */
+.spark {
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  font-size: 1.2rem;
+  animation: burst 1s ease-out forwards;
+}
+
+/* ---------- Animaciones ---------- */
+@keyframes screenIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes screenOut {
+  to {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.98);
+  }
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cardOut {
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.97);
+  }
+}
+
+@keyframes wordIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes sway {
+
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.18);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  10% {
+    opacity: 0.75;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift), 112vh, 0) rotate(360deg);
+  }
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+
+  15% {
+    opacity: 0.7;
+  }
+
+  85% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift), -112vh, 0) scale(1.1);
+  }
+}
+
+@keyframes burst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.6);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(1.2);
+  }
+}
+
+/* ---------- Adaptación a pantallas ---------- */
+@media (min-width: 768px) {
+  .screen {
+    max-width: 620px;
+    gap: 28px;
+  }
+
+  .card {
+    padding: 64px 52px 56px;
+    min-height: 320px;
+  }
+
+  .intro-card {
+    padding: 60px 48px 52px;
+  }
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 46px 20px 38px;
+  }
+
+  .btn {
+    padding: 14px 26px;
+  }
+}
+
+/* Respeta a quienes prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .floaters {
+    display: none;
+  }
+}
